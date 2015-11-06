@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from Operaciones import views
-from Configuraciones import views
+from Operaciones.views import DepositosViewSet, ColectasViewSet, EventosViewSet, EstatusViewSet
+from Configuraciones.views import PaisViewSet
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register(r'Pais', views.PaisViewSet)
+router.register(r'Depositos', DepositosViewSet)
+router.register(r'Colectas', ColectasViewSet)
+router.register(r'Eventos', EventosViewSet)
+router.register(r'Estatus', EstatusViewSet)
+router.register(r'Pais', PaisViewSet)
 
 urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS

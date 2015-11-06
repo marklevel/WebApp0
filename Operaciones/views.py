@@ -1,22 +1,33 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from rest_framework import viewsets
-from Operaciones.serializers import DepositoSerializer
-from Oficinas.models import Sucursale, Departamento
 
-from django.views.generic.detail import DetailView
-from django.views.generic import ListView
+from Operaciones.serializers import DepositosSerializer, ColectasSerializer, EventosSerializer, EstatusSerializer
+from .models import Deposito, Colecta, Evento, Estatu
 
-from .models import Deposito
-
-class DepositoDetailView(DetailView):
-	model = Deposito 
-
-	def get_template_names(self):
-		return 'depositos.html'
-
-class DepositoViewSet(viewsets.ModelViewSet):
+class DepositosViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
     queryset = Deposito.objects.all()
-    serializer_class = DepositoSerializer
+    serializer_class = DepositosSerializer
+
+class ColectasViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Colecta.objects.all()
+    serializer_class = ColectasSerializer
+
+class EventosViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Evento.objects.all()
+    serializer_class = EventosSerializer
+
+class EstatusViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Estatu.objects.all()
+    serializer_class = EstatusSerializer
